@@ -35,15 +35,15 @@ function ProjectOverview() {
       <section className="flex flex-col items-center my-5">
         {/* Header Section */}
         <div className="flex flex-row items-center justify-between w-full max-w-5xl mb-4">
-          <p className="project-overview-heading text-slate-50 font-semibold text-2xl">
-            Projects Overview
+          <p className="font-mono text-slate-50 font-bold text-5xl tracking-tight">
+            PROJECTS OVERVIEW
           </p>
           <button
             className="bg-slate-950 text-white border-1 hover:bg-slate-50 hover:text-black font-medium py-1 px-2 rounded-md flex items-center transition duration-300 group"
             onClick={() => setShowProjectCreator(true)}
           >
             <span className="group-hover:hidden">+</span>
-            <span className="hidden group-hover:inline transition duration-400">
+            <span className="font-mono text-base hidden group-hover:inline transition duration-400">
               Create New Project +
             </span>
           </button>
@@ -62,8 +62,10 @@ function ProjectOverview() {
                 alt={project.project_name}
                 className="mb-3 w-60 h-60 object-cover" // Tailwind classes for square dimensions
               />
-              <h3 className="text-base text-center">{project.project_name}</h3>
-              <p className="font-light text-sm flex items-center justify-center">
+              <h3 className="font-mono font-medium text-base text-center">
+                {project.project_name}
+              </h3>
+              <p className="font-sans text-sm text-gray-400 flex items-center justify-center">
                 {project.project_type}
                 <span
                   className={`w-1.5 h-1.5 rounded-full ml-1.5 ${project.project_status ? "bg-green-500" : "bg-red-500"}`}
@@ -80,8 +82,8 @@ function ProjectOverview() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-black border border-slate-50 rounded-lg p-6 w-full max-w-3xl">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold text-slate-50">
-                Create New Project
+              <h2 className="font-mono text-xl font-bold text-slate-50">
+                CREATE NEW PROJECT
               </h2>
               <button
                 onClick={() => setShowProjectCreator(false)}

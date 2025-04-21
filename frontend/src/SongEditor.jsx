@@ -89,7 +89,7 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
 
   return (
     <>
-      <section className="flex flex-col items-center my-5">
+      <section className="flex flex-col items-center my-5 font-mono">
         <div className="w-full max-w-5xl bg-black p-6 rounded-lg">
           <form
             className="flex gap-6"
@@ -101,32 +101,32 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
             {/* Left Column: Inputs */}
             <div className="flex flex-col gap-4 w-1/2">
               <div>
-                <label className="block font-medium mb-1 text-left text-slate-50">
-                  Song Name
+                <label className="block font-semibold mb-1 text-left text-slate-50">
+                  SONG NAME
                 </label>
                 <input
                   type="text"
                   className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400"
                   value={songName}
                   onChange={(e) => setSongName(e.target.value)}
-                  placeholder="Enter song name"
+                  placeholder="ENTER SONG NAME"
                 />
               </div>
               <div>
-                <label className="block font-medium mb-1 text-left text-slate-50">
-                  Collaborators
+                <label className="block font-semibold mb-1 text-left text-slate-50">
+                  COLLABORATORS
                 </label>
                 <input
                   type="text"
                   className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400"
                   value={songCollaborators}
                   onChange={(e) => setSongCollaborators(e.target.value)}
-                  placeholder="Enter collaborators"
+                  placeholder="ENTER COLLABORATORS"
                 />
               </div>
               <div>
-                <label className="block font-medium mb-1 text-left text-slate-50">
-                  Instrumental
+                <label className="block font-semibold mb-1 text-left text-slate-50">
+                  INSTRUMENTAL
                 </label>
                 <input
                   type="file"
@@ -135,7 +135,7 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
                   onChange={(e) => {
                     const file = e.target.files[0];
                     if (file) {
-                      handleFileUpload(file); // Call the upload function
+                      handleFileUpload(file);
                     }
                   }}
                 />
@@ -143,38 +143,38 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
             </div>
             {/* Right Column: Lyrics Textarea */}
             <div className="w-1/2">
-              <label className="block font-medium mb-1 text-left text-slate-50">
-                Lyrics
+              <label className="block font-semibold mb-1 text-left text-slate-50">
+                LYRICS
               </label>
               <textarea
                 className="border p-2 rounded w-full h-48 bg-black text-slate-50 border-slate-50 placeholder-gray-400"
                 value={songLyrics}
                 onChange={(e) => setSongLyrics(e.target.value)}
-                placeholder="Type lyrics here..."
+                placeholder="TYPE LYRICS HERE..."
               ></textarea>
             </div>
           </form>
           <div className="flex justify-end mt-4 gap-3">
             <button
               type="button"
-              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
               onClick={onClose}
             >
-              Cancel
+              CANCEL
             </button>
             <button
               type="button"
-              className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-red-600 hover:bg-red-600 hover:text-slate-950"
+              className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-red-600 hover:bg-red-600 hover:text-slate-950 font-mono"
               onClick={() => onDelete(song.song_id)}
             >
-              Delete Song
+              DELETE SONG
             </button>
             <button
               type="button"
-              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
               onClick={handleSave}
             >
-              Save Song
+              SAVE SONG
             </button>
           </div>
         </div>

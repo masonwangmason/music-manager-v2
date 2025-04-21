@@ -90,7 +90,7 @@ function SongCreator({ onClose, projectId, onSongAdded }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-mono">
       <form
         className="flex flex-col gap-4 bg-black"
         onSubmit={(e) => {
@@ -100,14 +100,14 @@ function SongCreator({ onClose, projectId, onSongAdded }) {
       >
         {/* Song Name Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Song Name
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            SONG NAME
           </label>
           <input
             type="text"
             value={songName}
             onChange={(e) => setSongName(e.target.value)}
-            placeholder="Enter song name"
+            placeholder="ENTER SONG NAME"
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400"
             required
           />
@@ -115,22 +115,22 @@ function SongCreator({ onClose, projectId, onSongAdded }) {
 
         {/* Song Collaborators Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Song Collaborators
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            SONG COLLABORATORS
           </label>
           <input
             type="text"
             value={songCollaborators}
             onChange={(e) => setSongCollaborators(e.target.value)}
-            placeholder="Enter song collaborators"
+            placeholder="ENTER SONG COLLABORATORS"
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400"
           />
         </div>
 
         {/* Song Instrumental Upload */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Upload Instrumental
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            UPLOAD INSTRUMENTAL
           </label>
           <input
             type="file"
@@ -138,18 +138,18 @@ function SongCreator({ onClose, projectId, onSongAdded }) {
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 cursor-pointer"
             onChange={handleFileChange}
           />
-          {uploading && <p className="text-slate-50">Uploading...</p>}
+          {uploading && <p className="text-slate-50">UPLOADING...</p>}
         </div>
 
         {/* Song Lyrics Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Song Lyrics
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            SONG LYRICS
           </label>
           <textarea
             value={songLyrics}
             onChange={(e) => setSongLyrics(e.target.value)}
-            placeholder="Enter song lyrics"
+            placeholder="ENTER SONG LYRICS"
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400 h-24"
           />
         </div>
@@ -158,17 +158,17 @@ function SongCreator({ onClose, projectId, onSongAdded }) {
         <div className="flex justify-end mt-4 gap-3">
           <button
             type="button"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             onClick={onClose}
           >
-            Cancel
+            CANCEL
           </button>
           <button
             type="submit"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             disabled={uploading}
           >
-            Save Song
+            {uploading ? "SAVING..." : "SAVE SONG"}
           </button>
         </div>
       </form>

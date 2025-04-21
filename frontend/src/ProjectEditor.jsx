@@ -111,7 +111,7 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-mono">
       <form
         className="flex flex-col gap-4 bg-black"
         onSubmit={(e) => {
@@ -121,8 +121,8 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
       >
         {/* Upload Project Cover */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Cover
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT COVER
           </label>
           <input
             type="file"
@@ -135,7 +135,7 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
           <div className="border-2 border-slate-50 border-dotted mt-2 w-full h-32 flex items-center justify-center rounded">
             {isUploading ? (
               <div className="text-slate-50">
-                <span className="animate-pulse">Uploading image...</span>
+                <span className="animate-pulse">UPLOADING IMAGE...</span>
               </div>
             ) : imagePreview ? (
               <img
@@ -144,7 +144,7 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
                 className="h-full object-contain"
               />
             ) : (
-              <span className="font-medium text-slate-50">Image Preview</span>
+              <span className="font-semibold text-slate-50">IMAGE PREVIEW</span>
             )}
           </div>
           {uploadError && (
@@ -154,14 +154,14 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
 
         {/* Project Name Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Name
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT NAME
           </label>
           <input
             type="text"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
-            placeholder="Enter project name"
+            placeholder="ENTER PROJECT NAME"
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400"
             required
           />
@@ -169,21 +169,21 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
 
         {/* Project Description Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Description
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT DESCRIPTION
           </label>
           <textarea
             value={projectDescription}
             onChange={(e) => setProjectDescription(e.target.value)}
-            placeholder="Enter project description"
+            placeholder="ENTER PROJECT DESCRIPTION"
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400 h-24"
           />
         </div>
 
         {/* Project Type Select */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Type
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT TYPE
           </label>
           <select
             value={projectType}
@@ -191,16 +191,16 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50"
             required
           >
-            <option value="">Select project type</option>
-            <option value="Album/EP">Album/EP</option>
-            <option value="Single">Single</option>
+            <option value="">SELECT PROJECT TYPE</option>
+            <option value="Album/EP">ALBUM/EP</option>
+            <option value="Single">SINGLE</option>
           </select>
         </div>
 
         {/* Project Status Select */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Status
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT STATUS
           </label>
           <select
             value={projectStatus}
@@ -208,8 +208,8 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50"
             required
           >
-            <option value="In Progress">In Progress</option>
-            <option value="Complete">Complete</option>
+            <option value="In Progress">IN PROGRESS</option>
+            <option value="Complete">COMPLETE</option>
           </select>
         </div>
 
@@ -217,24 +217,24 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
         <div className="flex justify-end mt-4 gap-3">
           <button
             type="button"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             onClick={onClose}
           >
-            Cancel
+            CANCEL
           </button>
           <button
             type="button"
-            className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-red-700"
+            className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-red-700 font-mono"
             onClick={onDelete}
           >
-            Delete
+            DELETE
           </button>
           <button
             type="submit"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             disabled={isUploading}
           >
-            {isUploading ? "Uploading..." : "Save Changes"}
+            {isUploading ? "UPLOADING..." : "SAVE CHANGES"}
           </button>
         </div>
       </form>

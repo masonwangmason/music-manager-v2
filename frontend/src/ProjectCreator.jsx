@@ -115,12 +115,12 @@ function ProjectCreator({ onClose, onSave }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-mono">
       <form className="flex flex-col gap-4 bg-black" onSubmit={handleSubmit}>
         {/* Upload Album Cover */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Album Cover
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            ALBUM COVER
           </label>
           <input
             type="file"
@@ -132,7 +132,7 @@ function ProjectCreator({ onClose, onSave }) {
           {/* Image Preview */}
           <div className="border-2 border-slate-50 border-dotted mt-2 w-full h-32 flex items-center justify-center rounded">
             {isUploading ? (
-              <span className="font-medium text-slate-50">Uploading...</span>
+              <span className="font-semibold text-slate-50">UPLOADING...</span>
             ) : imagePreview ? (
               <img
                 src={imagePreview}
@@ -140,15 +140,15 @@ function ProjectCreator({ onClose, onSave }) {
                 className="h-full object-contain"
               />
             ) : (
-              <span className="font-medium text-slate-50">Image Preview</span>
+              <span className="font-semibold text-slate-50">IMAGE PREVIEW SECTION - Please Upload Above </span>
             )}
           </div>
         </div>
 
         {/* Project Name Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Name
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT NAME
           </label>
           <input
             type="text"
@@ -163,8 +163,8 @@ function ProjectCreator({ onClose, onSave }) {
 
         {/* Project Description Input */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Description
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT DESCRIPTION
           </label>
           <textarea
             className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 placeholder-gray-400 h-24"
@@ -177,19 +177,19 @@ function ProjectCreator({ onClose, onSave }) {
 
         {/* Project Type Select */}
         <div>
-          <label className="block font-medium mb-1 text-left text-slate-50">
-            Project Type
+          <label className="block font-semibold mb-1 text-left text-slate-50">
+            PROJECT TYPE
           </label>
           <select
-            className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50"
+            className="border p-2 rounded w-full bg-black text-slate-50 border-slate-50 font-mono"
             value={projectType}
             onChange={(e) => setProjectType(e.target.value)}
             required
             disabled={isUploading}
           >
-            <option value="">Select project type</option>
-            <option value="Album/EP">Album/EP</option>
-            <option value="Single">Single</option>
+            <option value="">SELECT PROJECT TYPE</option>
+            <option value="Album/EP">ALBUM/EP</option>
+            <option value="Single">SINGLE</option>
           </select>
         </div>
 
@@ -197,18 +197,18 @@ function ProjectCreator({ onClose, onSave }) {
         <div className="flex justify-end mt-4 gap-3">
           <button
             type="button"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             onClick={onClose}
             disabled={isUploading}
           >
-            Cancel
+            CANCEL
           </button>
           <button
             type="submit"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             disabled={isUploading}
           >
-            {isUploading ? "Creating..." : "Create Project"}
+            {isUploading ? "CREATING..." : "CREATE PROJECT"}
           </button>
         </div>
       </form>
