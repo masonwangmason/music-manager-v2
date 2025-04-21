@@ -1,0 +1,25 @@
+{
+  "name": "music-manager",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.7",
+    "express": "~4.16.1",
+    "mongodb": "^6.15.0",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.15",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.0.15"
+  }
+}
