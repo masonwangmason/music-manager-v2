@@ -116,7 +116,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
           <div>
             <h4 className="font-semibold text-left">{songName}</h4>
             <p className="text-sm text-gray-400 text-left">
-              feat.{collaboratorName}
+              {collaboratorName ? `feat.${collaboratorName}` : ""}
             </p>
           </div>
         </div>
