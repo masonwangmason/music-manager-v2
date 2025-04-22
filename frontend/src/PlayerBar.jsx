@@ -13,6 +13,27 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
   const [loopStatus, setLoopStatus] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [previousVolume, setPreviousVolume] = useState(1);
+
+  // Add a state to track volume slider value
+  const [volumeValue, setVolumeValue] = useState(1);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        // Unmute by restoring previous volume
+        audioRef.current.volume = previousVolume;
+        setVolumeValue(previousVolume); // Update slider value
+      } else {
+        // Mute by storing current volume and setting to 0
+        setPreviousVolume(audioRef.current.volume);
+        audioRef.current.volume = 0;
+        setVolumeValue(0); // Update slider value
+      }
+      setIsMuted(!isMuted);
+    }
+  };
 
   useEffect(() => {
     if (audioRef.current && songUrl) {
@@ -172,34 +193,41 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
           {/* Repeat */}
           <button onClick={handleLoopChange}>
             <img
-              className={`w-8 h-8 p-2 ${loopStatus ? "bg-violet-600" : "bg-slate-50"} rounded-4xl transition duration-200`}
+              className={`w-8 h-8 p-2 ${loopStatus ? "invert bg-lime-500" : "bg-slate-50"} rounded-4xl transition duration-200`}
               src={repeatButton}
               alt="repeat-button"
             />
           </button>
-          {/* No Volume Icon */}
-          <img
-            className="w-4 h-4 invert"
-            src={minSoundIcon}
-            alt="min-sound-icon"
-          />
+          {/* Volume Icon */}
+          <button onClick={toggleMute}>
+            <img
+              className="w-4 h-4 invert"
+              src={isMuted ? maxSoundIcon : minSoundIcon}
+              alt={isMuted ? "unmute-button" : "mute-button"}
+            />
+          </button>
           {/* Volume Slider */}
           <input
             type="range"
             min="0"
             max="1"
             step="0.01"
+            value={volumeValue} // Use the state value
             className="w-24 h-1 accent-violet-600 bg-gray-600 rounded-full cursor-pointer"
             onChange={(e) => {
-              audioRef.current.volume = e.target.value;
+              const newVolume = parseFloat(e.target.value);
+              audioRef.current.volume = newVolume;
+              setVolumeValue(newVolume); // Update the state
+              
+              // Update mute state based on volume
+              if (newVolume === 0) {
+                setIsMuted(true);
+              } else {
+                setIsMuted(false);
+                setPreviousVolume(newVolume);
+              }
             }}
           />{" "}
-          {/* Max Volume Icon */}
-          <img
-            className="w-4 h-4 invert"
-            src={maxSoundIcon}
-            alt="max-sound-icon"
-          />
         </div>
       </div>
 

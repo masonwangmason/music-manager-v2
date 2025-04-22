@@ -171,7 +171,7 @@ function ProjectView({ onPlaySong }) {
             </p>
 
             <button
-              className="font-mono text-sm bg-violet-600 text-white hover:bg-violet-900 hover:text-black font-normal py-2 px-2 rounded-md transition duration-200 self-center w-full max-w-xs"
+              className="font-mono text-sm bg-violet-600 text-white hover:bg-violet-900 font-normal py-2 px-2 rounded-md transition duration-200 self-center w-full max-w-xs"
               onClick={() => setShowProjectEditor(true)}
             >
               EDIT PROJECT DETAILS
