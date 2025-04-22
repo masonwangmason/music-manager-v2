@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import ProjectCreator from "./ProjectCreator";
 
 function ProjectOverview() {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
   const [showProjectCreator, setShowProjectCreator] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [visibleProjects, setVisibleProjects] = useState(8); // Initial number of projects to show
 
   // Fetch projects from the server
   useEffect(() => {
@@ -30,6 +31,15 @@ function ProjectOverview() {
     console.log("Updated projects list:", updatedProjects);
   };
 
+  // Load more projects
+  const loadMoreProjects = () => {
+    setVisibleProjects(prevVisible => prevVisible + 8); // Load 8 more projects
+  };
+
+  // Get the projects to display
+  const projectsToDisplay = [...projects].reverse().slice(0, visibleProjects);
+  const hasMoreProjects = projects.length > visibleProjects;
+
   return (
     <>
       <section className="flex flex-col items-center my-5">
@@ -48,16 +58,16 @@ function ProjectOverview() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-4 gap-5 max-w-5xl">
-          {projects.map((project, index) => (
+          {projectsToDisplay.map((project, index) => (
             <button
               key={index}
-              className="project-button hover:scale-105 transition duration-200 flex flex-col items-center" // Add flexbox classes
+              className="project-button hover:scale-105 transition duration-200 flex flex-col items-center"
               onClick={() => navigate(`/project/${project.id}`)}
             >
               <img
                 src={project.project_cover}
                 alt={project.project_name}
-                className="mb-3 w-60 h-60 object-cover rounded-md" // Tailwind classes for square dimensions
+                className="mb-3 w-60 h-60 object-cover rounded-md"
               />
               <h3 className="font-mono font-medium text-base text-center">
                 {project.project_name}
@@ -78,6 +88,16 @@ function ProjectOverview() {
             </button>
           ))}
         </div>
+        
+        {/* Load More Button */}
+        {hasMoreProjects && (
+          <button
+            className="font-mono bg-violet-600 text-white mt-8 mb-8 py-2 px-4 rounded-md transition duration-300 hover:bg-violet-900"
+            onClick={loadMoreProjects}
+          >
+            LOAD MORE PROJECTS
+          </button>
+        )}
       </section>
 
       {/* Project Creator Popup */}

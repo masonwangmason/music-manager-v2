@@ -69,7 +69,7 @@ function ProjectView({ onPlaySong }) {
   };
 
   if (!project) {
-    return <p className="font-sans text-white text-center">⚠ Project not found!</p>;
+    return <p className="font-mono text-white text-center">⚠ Loading Project...</p>;
   }
 
   const handleSongAdded = (newSong) => {
@@ -121,7 +121,7 @@ function ProjectView({ onPlaySong }) {
 
   return (
     <>
-      <section className="flex flex-col items-start my-5 w-full max-w-5xl mx-auto">
+      <section className="flex flex-col items-start mt-5 mb-10 w-full max-w-5xl mx-auto">
         {/* Back Button */}
         <button
           className="font-sans bg-black font-medium p-2 mb-4 border-1 rounded-md transition duration-300 hover:invert"
