@@ -22,8 +22,8 @@ function ProjectCreator({ onClose, onSave }) {
 
   // Upload image to Cloudinary
   const uploadToCloudinary = async (file) => {
-    const cloudName = "df11www4b"; 
-    const uploadPreset = "music-manager"; 
+    const cloudName = "df11www4b";
+    const uploadPreset = "music-manager";
 
     const formData = new FormData();
     formData.append("file", file);
@@ -81,7 +81,7 @@ function ProjectCreator({ onClose, onSave }) {
       project_type: projectType,
       project_description: projectDescription,
       project_cover: coverUrl,
-      project_status: false, 
+      project_status: false,
     };
 
     console.log("New project data:", newProject);
@@ -140,7 +140,9 @@ function ProjectCreator({ onClose, onSave }) {
                 className="h-full object-contain"
               />
             ) : (
-              <span className="font-semibold text-slate-50">IMAGE PREVIEW SECTION - Please Upload Above </span>
+              <span className="font-semibold text-slate-50">
+                IMAGE PREVIEW SECTION - Please Upload Above{" "}
+              </span>
             )}
           </div>
         </div>

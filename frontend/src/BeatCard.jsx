@@ -1,8 +1,6 @@
 import headphoneIcon from "./assets/headphone.png";
 
-// Updated to use MongoDB field names and receive onEdit
-function BeatCard({ beat, onPlay, onEdit }) { // Added onEdit prop
-  // Default values for safety
+function BeatCard({ beat, onPlay, onEdit }) { 
   const beatName = beat.beat_name || "Untitled Beat";
   const beatAuthor = beat.beat_author || "Unknown Author";
   const beatBpm = beat.beat_bpm || "N/A";
@@ -18,7 +16,6 @@ function BeatCard({ beat, onPlay, onEdit }) { // Added onEdit prop
       >
         <img
           className="bg-slate-50 p-1 size-8 rounded-2xl transition duration-400 hover:border-2"
-          // Use beat.cover if you add it to MongoDB, otherwise default icon
           src={beat.cover || headphoneIcon}
           alt="beat-cover-icon"
         />
@@ -26,14 +23,14 @@ function BeatCard({ beat, onPlay, onEdit }) { // Added onEdit prop
 
       {/* Beat Info */}
       <div className="flex-1 flex flex-row items-center gap-4 overflow-hidden ml-10">
-        <p className="flex-1 truncate">{beatName}</p> {/* Beat Name - Added font-semibold */}
+        <p className="flex-1 truncate">{beatName}</p> {/* Beat Name */}
         <p className="flex-1 truncate">{beatAuthor}</p> {/* Beat Author */}
         <p className="flex-1">{beatBpm} BPM</p> {/* BPM */}
         <p className="flex-1">{beatLength}</p> {/* Beat Length */}
       </div>
 
-      {/* Action Buttons / Extra Info - Added Edit Button */}
-      <div className="flex flex-row gap-3 items-center"> {/* Increased gap */}
+      {/* Action Buttons / Extra Info */}
+      <div className="flex flex-row gap-3 items-center"> 
          {/* Edit Button */}
          <button
            className="font-mono text-xs font-light border border-slate-400 text-slate-300 py-1 px-2.5 rounded-md transition duration-200 hover:bg-slate-700 hover:text-slate-50"
@@ -41,7 +38,6 @@ function BeatCard({ beat, onPlay, onEdit }) { // Added onEdit prop
          >
            Edit
          </button>
-         {/* BPM display removed previously */}
       </div>
     </div>
   );

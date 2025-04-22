@@ -139,7 +139,10 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
                     }
                   }}
                 />
-                <span className="text-xs text-left block mt-1">Please Leave it empty if you don't want to update your existing audio file</span>
+                <span className="text-xs text-left block mt-1">
+                  Please Leave it empty if you don't want to update your
+                  existing audio file
+                </span>
               </div>
             </div>
             {/* Right Column: Lyrics Textarea */}

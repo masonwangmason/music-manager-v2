@@ -69,7 +69,11 @@ function ProjectView({ onPlaySong }) {
   };
 
   if (!project) {
-    return <p className="font-mono text-white text-center">⚠ Loading Project...Please refresh if getting stucked</p>;
+    return (
+      <p className="font-mono text-white text-center">
+        ⚠ Loading Project...Please refresh if getting stucked
+      </p>
+    );
   }
 
   const handleSongAdded = (newSong) => {
@@ -121,26 +125,22 @@ function ProjectView({ onPlaySong }) {
 
   return (
     <>
-      <section className="flex flex-col items-start mt-5 mb-10 w-full max-w-5xl mx-auto pb-24"> {/* Added pb-24 */}
+      <section className="flex flex-col items-start mt-5 mb-10 w-full max-w-5xl mx-auto pb-24">
+        {" "}
+        {/* Added pb-24 */}
         {/* Back Button */}
         <button
           className="font-sans bg-black font-medium p-2 mb-4 border-1 rounded-md transition duration-300 hover:invert"
           onClick={() => navigate(-1)}
         >
-          <img 
-            className="size-5 invert" 
-            src={leftArrow} 
-            alt="back-button" 
-          />
+          <img className="size-5 invert" src={leftArrow} alt="back-button" />
         </button>
-
         <div className="w-full mb-4 text-left">
           {/* Change <p> to <h1> for the main page title */}
           <h1 className="font-mono text-slate-50 font-bold text-5xl tracking-tight mb-1">
             PROJECT VIEW
           </h1>
         </div>
-
         <div className="flex flex-row gap-10 w-full">
           {/* Left-Aligned Content Box */}
           <div className="flex flex-col items-start w-1/3">
@@ -161,7 +161,9 @@ function ProjectView({ onPlaySong }) {
               {project.project_type}
             </p>
 
-            <h2 className="font-mono font-semibold mb-1">PROJECT DESCRIPTION</h2>
+            <h2 className="font-mono font-semibold mb-1">
+              PROJECT DESCRIPTION
+            </h2>
             <p className="font-sans font-normal mb-4 text-slate-50 text-left">
               {project.project_description}
             </p>
@@ -294,7 +296,9 @@ function ProjectView({ onPlaySong }) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-black border border-slate-50 rounded-lg p-6 w-full max-w-3xl">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="font-mono text-xl font-semibold text-slate-50">EDIT SONG</h2>
+              <h2 className="font-mono text-xl font-semibold text-slate-50">
+                EDIT SONG
+              </h2>
               <button
                 onClick={() => setShowSongEditor(false)}
                 className="text-slate-50 hover:text-slate-300"

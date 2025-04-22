@@ -37,7 +37,7 @@ function ProjectOverview() {
 
   // Load more projects
   const loadMoreProjects = () => {
-    setVisibleProjects(prevVisible => prevVisible + 8); // Load 8 more projects
+    setVisibleProjects((prevVisible) => prevVisible + 8); // Load 8 more projects
   };
 
   // Get the projects to display
@@ -46,7 +46,9 @@ function ProjectOverview() {
 
   return (
     <>
-      <section className="flex flex-col items-center mt-5 pb-24"> {/* Added pb-24 for bottom padding */}
+      <section className="flex flex-col items-center mt-5 pb-24">
+        {" "}
+        {/* Added pb-24 for bottom padding */}
         {/* Header Section */}
         <div className="flex flex-row items-center justify-between w-full max-w-5xl mb-4">
           <p className="font-mono text-slate-50 font-bold text-5xl tracking-tight">
@@ -59,11 +61,12 @@ function ProjectOverview() {
             +
           </button>
         </div>
-
         {/* Loading Message */}
         {isLoading ? (
           <div className="flex justify-center items-center h-60 w-full">
-            <p className="font-mono text-slate-50 text-xl">⚠ Loading projects...Please refresh if getting stucked</p>
+            <p className="font-mono text-slate-50 text-xl">
+              ⚠ Loading projects...Please refresh if getting stucked
+            </p>
           </div>
         ) : (
           <>
@@ -84,18 +87,25 @@ function ProjectOverview() {
                     {project.project_name}
                   </h3>
                   {/* Wrap type and status in a flex container */}
-                  <div className="flex items-center justify-center gap-x-1 mt-1"> {/* Added flex container */}
-                    <p className="font-sans text-xs text-slate-400"> {/* Removed flex classes from here */}
+                  <div className="flex items-center justify-center gap-x-1 mt-1">
+                    {" "}
+                    {/* Added flex container */}
+                    <p className="font-sans text-xs text-slate-400">
+                      {" "}
+                      {/* Removed flex classes from here */}
                       {project.project_type}
                     </p>
                     <span className="text-slate-400 text-xs">|</span>
                     <span
-                      className={`w-auto h-6 rounded-full text-xs font-sans flex items-center justify-center ${ // Adjusted width to auto and padding
+                      className={`w-auto h-6 rounded-full text-xs font-sans flex items-center justify-center ${
+                        // Adjusted width to auto and padding
                         project.project_status
                           ? "text-violet-500"
                           : "text-slate-400"
                       }`}
-                      title={project.project_status ? "Complete" : "In progress"}
+                      title={
+                        project.project_status ? "Complete" : "In progress"
+                      }
                     >
                       {project.project_status ? "Complete" : "In Progress"}
                     </span>

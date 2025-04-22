@@ -221,7 +221,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
               const newVolume = parseFloat(e.target.value);
               audioRef.current.volume = newVolume;
               setVolumeValue(newVolume); // Update the state
-              
+
               // Update mute state based on volume
               if (newVolume === 0) {
                 setIsMuted(true);

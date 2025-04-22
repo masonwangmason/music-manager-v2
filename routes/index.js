@@ -1,5 +1,5 @@
 import express from "express";
-import connectDB from "../db/mongodb.js"; 
+import connectDB from "../db/mongodb.js";
 
 const router = express.Router();
 
@@ -204,8 +204,6 @@ router.delete("/api/projects/:projectId/songs/:songId", async (req, res) => {
   }
 });
 
-// --- Add the new endpoint for fetching beats below ---
-
 // GET endpoint to fetch all beats
 router.get("/api/beats", async (req, res) => {
   try {
@@ -227,9 +225,11 @@ router.get("/api/beats", async (req, res) => {
 router.post("/api/beats", async (req, res) => {
   const newBeat = req.body;
 
-  // Basic validation (optional but recommended)
+  // Basic validation
   if (!newBeat.beat_name || !newBeat.beat_author || !newBeat.beat_bpm) {
-    return res.status(400).json({ error: "Missing required beat fields (name, author, bpm)" });
+    return res
+      .status(400)
+      .json({ error: "Missing required beat fields (name, author, bpm)" });
   }
 
   try {
@@ -251,16 +251,10 @@ router.post("/api/beats", async (req, res) => {
     // Insert the new beat document into the collection
     const result = await beatsCollection.insertOne(newBeat);
 
-    // Check if insert was successful (optional, insertOne throws on error)
-    // MongoDB Node.js driver v4+ insertOne result doesn't directly have 'ops'
-    // We can return the document we intended to insert, now including the generated 'id'
-    // MongoDB automatically adds the '_id' field.
-
     console.log("Added new beat:", { id: newBeat.id, ...newBeat }); // Log the added beat
 
     // Respond with the newly created beat data (including the generated id)
     res.status(201).json({ id: newBeat.id, ...newBeat });
-
   } catch (error) {
     console.error("Error adding beat:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -313,6 +307,5 @@ router.delete("/api/beats/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 export default router;

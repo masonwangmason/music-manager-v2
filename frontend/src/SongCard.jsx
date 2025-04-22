@@ -25,7 +25,9 @@ function SongCard({ song, onEdit, onPlay }) {
         <p className="flex-none">{song.song_duration}</p>{" "}
         {/* Display song duration */}
         <p className="flex-1 truncate">
-          {song.song_collaborators ? `feat.${song.song_collaborators}` : "No Feature"}
+          {song.song_collaborators
+            ? `feat.${song.song_collaborators}`
+            : "No Feature"}
         </p>{" "}
         {/* Display artist name or placeholder */}
       </div>
