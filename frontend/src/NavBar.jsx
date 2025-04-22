@@ -11,6 +11,10 @@ function NavBar() {
           <Link to="/" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium font-mono">
             PROJECTS
           </Link>
+          {/* Add the link to the Beats page */}
+          <Link to="/beats" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium font-mono">
+            BEATS
+          </Link>
           <Link to="/instructions" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium font-mono">
             INSTRUCTIONS 
           </Link>

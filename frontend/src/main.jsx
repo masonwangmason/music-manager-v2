@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import PlayerBar from "./PlayerBar";
 import NavBar from "./NavBar"; // Import NavBar
+import defaultBeatCover from './assets/headphone.png'; // Import a default image for beats
 
 function Main() {
   const [currentSongUrl, setCurrentSongUrl] = useState("");
@@ -11,16 +12,18 @@ function Main() {
   const [currentCollaboratorName, setCurrentCollaboratorName] = useState("");
   const [currentProjectCover, setCurrentProjectCover] = useState("");
 
-  const handlePlaySong = (
-    songUrl,
-    songName,
-    collaboratorName,
-    projectCover
+  // This function now handles both songs and beats
+  const handlePlay = (
+    url,
+    name,
+    authorOrCollaborator, // Can be song collaborator or beat author
+    cover // Can be project cover or null/default for beats
   ) => {
-    setCurrentSongUrl(songUrl);
-    setCurrentSongName(songName);
-    setCurrentCollaboratorName(collaboratorName);
-    setCurrentProjectCover(projectCover);
+    setCurrentSongUrl(url);
+    setCurrentSongName(name);
+    setCurrentCollaboratorName(authorOrCollaborator);
+    // Use the provided cover, or the default beat cover if none is provided
+    setCurrentProjectCover(cover || defaultBeatCover);
   };
 
   return (
@@ -28,17 +31,19 @@ function Main() {
       <div className="app-container flex flex-col min-h-screen"> {/* Ensure container takes full height */}
         <NavBar /> {/* Add NavBar at the top */}
 
-        {/* Main Content Area with padding top to avoid overlap with fixed NavBar */}
+        {/* Main Content Area */}
         <div className="main-content flex-grow pt-16"> {/* Added pt-16 and flex-grow */}
-          <App onPlaySong={handlePlaySong} /> {/* Pass handlePlaySong to App */}
+          {/* Pass the unified handlePlay function */}
+          <App onPlayItem={handlePlay} />
         </div>
 
         {/* Player Bar - Remains at the bottom */}
         <PlayerBar
           songUrl={currentSongUrl}
           songName={currentSongName}
+          // Pass the author/collaborator name to the PlayerBar
           collaboratorName={currentCollaboratorName}
-          projectCover={currentProjectCover}
+          projectCover={currentProjectCover} // Pass the potentially default cover
         />
       </div>
     </BrowserRouter>

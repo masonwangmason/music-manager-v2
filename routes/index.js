@@ -204,4 +204,115 @@ router.delete("/api/projects/:projectId/songs/:songId", async (req, res) => {
   }
 });
 
+// --- Add the new endpoint for fetching beats below ---
+
+// GET endpoint to fetch all beats
+router.get("/api/beats", async (req, res) => {
+  try {
+    // Ensure the database connection is established
+    if (!db) {
+      return res.status(503).json({ error: "Database not connected" });
+    }
+    const beatsCollection = db.collection("beats");
+    const beats = await beatsCollection.find().toArray(); // Fetch all documents from the "beats" collection
+    console.log("Fetched beats:", beats); // Log the fetched beats
+    res.json(beats); // Send the beats data as JSON response
+  } catch (error) {
+    console.error("Error fetching beats:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// POST endpoint to add a new beat
+router.post("/api/beats", async (req, res) => {
+  const newBeat = req.body;
+
+  // Basic validation (optional but recommended)
+  if (!newBeat.beat_name || !newBeat.beat_author || !newBeat.beat_bpm) {
+    return res.status(400).json({ error: "Missing required beat fields (name, author, bpm)" });
+  }
+
+  try {
+    // Ensure the database connection is established
+    if (!db) {
+      return res.status(503).json({ error: "Database not connected" });
+    }
+    const beatsCollection = db.collection("beats");
+
+    // Generate a custom sequential id (similar to projects)
+    const lastBeat = await beatsCollection
+      .find()
+      .sort({ id: -1 }) // Sort by 'id' field descending
+      .limit(1)
+      .toArray();
+    // Assign the next sequential ID
+    newBeat.id = lastBeat.length > 0 ? lastBeat[0].id + 1 : 1;
+
+    // Insert the new beat document into the collection
+    const result = await beatsCollection.insertOne(newBeat);
+
+    // Check if insert was successful (optional, insertOne throws on error)
+    // MongoDB Node.js driver v4+ insertOne result doesn't directly have 'ops'
+    // We can return the document we intended to insert, now including the generated 'id'
+    // MongoDB automatically adds the '_id' field.
+
+    console.log("Added new beat:", { id: newBeat.id, ...newBeat }); // Log the added beat
+
+    // Respond with the newly created beat data (including the generated id)
+    res.status(201).json({ id: newBeat.id, ...newBeat });
+
+  } catch (error) {
+    console.error("Error adding beat:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// PUT endpoint to update an existing beat
+router.put("/api/beats/:id", async (req, res) => {
+  const beatId = parseInt(req.params.id, 10); // Ensure ID is a number
+  const updatedBeat = req.body;
+
+  try {
+    const beatsCollection = db.collection("beats");
+    const result = await beatsCollection.updateOne(
+      { id: beatId },
+      { $set: updatedBeat }
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ error: "Beat not found" });
+    }
+
+    const updatedBeatDoc = await beatsCollection.findOne({ id: beatId });
+    res.json(updatedBeatDoc);
+  } catch (error) {
+    console.error("Error updating beat:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// DELETE endpoint to remove a beat
+router.delete("/api/beats/:id", async (req, res) => {
+  const beatId = Number(req.params.id);
+
+  try {
+    if (!db) {
+      return res.status(503).json({ error: "Database not connected" });
+    }
+    const beatsCollection = db.collection("beats");
+
+    const result = await beatsCollection.deleteOne({ id: beatId });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: "Beat not found" });
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    console.error("Error deleting beat:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 export default router;
