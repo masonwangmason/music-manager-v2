@@ -10,6 +10,7 @@
 **Demo**:  https://music-manager-obf2.vercel.app/   
 **Video**: https://youtu.be/J9A7jvZbIM4  
 **Wireframe**: https://www.figma.com/design/nuBMiwldwZXAxi7fLpHPEg/Untitled?node-id=0-1&t=gia474sT3jKBywSQ-1    
+**Accessibility Report**:  
 
 ## Project Overview
 **Music Manager** is a comprehensive web application designed to **help music professionals organize their music projects and tracks in one centralized platform**. Built with **React**, **Node.js**, **Express.js**, and **MongoDB**, the app provides an intuitive interface for managing music production workflows. Users can create projects, upload instrumental tracks, add lyrics, and track collaborators for each song. The application also features a built-in audio player that allows users to listen to their tracks directly within the platform, making it easy to review and share works in progress.
