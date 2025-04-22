@@ -8,13 +8,13 @@
 **Slides**: https://docs.google.com/presentation/d/19iK7HiSdbrnFAYzKF6mAIqpoBfaOTNJ4NIO8h33nHlA/edit?usp=sharing    
 **Demo**:  https://music-manager-v2.vercel.app     
 **Video**: https://youtu.be/1F8DEJUZHRk  
-**Accessibility Report**: https://docs.google.com/document/d/1oNneqeGpqC3d7IbJnxxzjTz0GYLaVGgVEXRO903RXok/edit?usp=sharing  
+**Usability Report**: https://docs.google.com/document/d/1oNneqeGpqC3d7IbJnxxzjTz0GYLaVGgVEXRO903RXok/edit?usp=sharing  
 
 ## Project Overview
 **Music Manager** is a comprehensive web application designed to **help music professionals organize their music projects and tracks in one centralized platform**. Built with **React**, **Node.js**, **Express.js**, and **MongoDB**, the app provides an intuitive interface for managing music production workflows. Users can create projects, upload instrumental tracks, add lyrics, and track collaborators for each song. The application also features a built-in audio player that allows users to listen to their tracks directly within the platform, making it easy to review and share works in progress.
 
 **Frontend Development**: HTML/CSS, JavaScript, React, Tailwind CSS   
-**Backend Development**: Node.js, Express
+**Backend Development**: Node.js, Express  
 **Database**: MongoDB, Cloudinary  
 **Development Tools**: Trae & VS Code (with ESLint & Prettier)  
 **Deployment**: Vercel  
