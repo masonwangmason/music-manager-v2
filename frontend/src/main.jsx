@@ -26,7 +26,7 @@ function Main() {
     <BrowserRouter>
       <div className="app-container">
         {/* Main Content */}
-        <div className="main-content pb-20">
+        <div className="main-content">
           <App onPlaySong={handlePlaySong} /> {/* Pass handlePlaySong to App */}
         </div>
 

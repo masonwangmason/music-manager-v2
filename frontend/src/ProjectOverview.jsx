@@ -6,17 +6,21 @@ function ProjectOverview() {
   const navigate = useNavigate();
   const [showProjectCreator, setShowProjectCreator] = useState(false);
   const [projects, setProjects] = useState([]);
-  const [visibleProjects, setVisibleProjects] = useState(8); // Initial number of projects to show
+  const [visibleProjects, setVisibleProjects] = useState(8);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   // Fetch projects from the server
   useEffect(() => {
     const fetchProjects = async () => {
+      setIsLoading(true); // Set loading to true when fetch starts
       try {
         const response = await fetch("/api/projects");
         const data = await response.json();
         setProjects(data);
       } catch (error) {
         console.error("Error fetching projects:", error);
+      } finally {
+        setIsLoading(false); // Set loading to false when fetch completes
       }
     };
 
@@ -42,7 +46,7 @@ function ProjectOverview() {
 
   return (
     <>
-      <section className="flex flex-col items-center my-5">
+      <section className="flex flex-col items-center mt-5 pb-24"> {/* Added pb-24 for bottom padding */}
         {/* Header Section */}
         <div className="flex flex-row items-center justify-between w-full max-w-5xl mb-4">
           <p className="font-mono text-slate-50 font-bold text-5xl tracking-tight">
@@ -56,47 +60,56 @@ function ProjectOverview() {
           </button>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-4 gap-5 max-w-5xl">
-          {projectsToDisplay.map((project, index) => (
-            <button
-              key={index}
-              className="project-button hover:scale-105 transition duration-200 flex flex-col items-center"
-              onClick={() => navigate(`/project/${project.id}`)}
-            >
-              <img
-                src={project.project_cover}
-                alt={project.project_name}
-                className="mb-3 w-60 h-60 object-cover rounded-md"
-              />
-              <h3 className="font-mono font-medium text-base text-center">
-                {project.project_name}
-              </h3>
-              <p className="font-sans text-sm text-slate-400 flex items-center justify-center">
-                {project.project_type}
-              </p>
-              <span
-                className={`w-26 h-6 px-1 py-1 rounded-full text-xs font-sans flex items-center justify-center ${
-                  project.project_status 
-                    ? "text-violet-600" 
-                    : "text-slate-500"
-                }`}
-                title={project.project_status ? "Complete" : "In progress"}
+        {/* Loading Message */}
+        {isLoading ? (
+          <div className="flex justify-center items-center h-60 w-full">
+            <p className="font-mono text-slate-50 text-xl">⚠ Loading projects...Please refresh if getting stucked</p>
+          </div>
+        ) : (
+          <>
+            {/* Projects Grid */}
+            <div className="grid grid-cols-4 gap-5 max-w-5xl">
+              {projectsToDisplay.map((project, index) => (
+                <button
+                  key={index}
+                  className="project-button hover:scale-105 transition duration-200 flex flex-col items-center"
+                  onClick={() => navigate(`/project/${project.id}`)}
+                >
+                  <img
+                    src={project.project_cover}
+                    alt={project.project_name}
+                    className="mb-3 w-60 h-60 object-cover rounded-md"
+                  />
+                  <h3 className="font-mono font-medium text-base text-center">
+                    {project.project_name}
+                  </h3>
+                  <p className="font-sans text-sm text-slate-400 flex items-center justify-center">
+                    {project.project_type}
+                  </p>
+                  <span
+                    className={`w-26 h-6 px-1 py-1 rounded-full text-xs font-sans flex items-center justify-center ${
+                      project.project_status 
+                        ? "text-violet-600" 
+                        : "text-slate-500"
+                    }`}
+                    title={project.project_status ? "Complete" : "In progress"}
+                  >
+                    {project.project_status ? "COMPLETE" : "IN PROGRESS"}
+                  </span>
+                </button>
+              ))}
+            </div>
+            
+            {/* Load More Button */}
+            {hasMoreProjects && (
+              <button
+                className="font-mono bg-violet-600 text-white mt-8 mb-8 py-2 px-4 rounded-md transition duration-300 hover:bg-violet-900"
+                onClick={loadMoreProjects}
               >
-                {project.project_status ? "COMPLETE" : "IN PROGRESS"}
-              </span>
-            </button>
-          ))}
-        </div>
-        
-        {/* Load More Button */}
-        {hasMoreProjects && (
-          <button
-            className="font-mono bg-violet-600 text-white mt-8 mb-8 py-2 px-4 rounded-md transition duration-300 hover:bg-violet-900"
-            onClick={loadMoreProjects}
-          >
-            LOAD MORE PROJECTS
-          </button>
+                LOAD MORE PROJECTS
+              </button>
+            )}
+          </>
         )}
       </section>
 
