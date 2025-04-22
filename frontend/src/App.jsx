@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import ProjectOverview from "./ProjectOverview";
 import ProjectView from "./ProjectView";
+import Instructions from "./Instructions"; // Import the Instructions component
 
 function App({ onPlaySong }) {
   return (
@@ -10,6 +11,7 @@ function App({ onPlaySong }) {
         path="/project/:id"
         element={<ProjectView onPlaySong={onPlaySong} />}
       />
+      <Route path="/instructions" element={<Instructions />} /> {/* Add route for Instructions */}
     </Routes>
   );
 }
