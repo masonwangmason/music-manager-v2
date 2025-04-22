@@ -13,7 +13,7 @@ function Instructions() {
         <li>Click 'Edit Project Details' to modify project information.</li>
         <li>Click on a song card's edit icon to modify song details.</li>
         <li>Click the play icon on a song card to play the song in the player bar below.</li>
-        <br />
+        {/* Removed the <br /> tag */}
         <li>You can also use the website only using keyboards (with tabs, arrow keys, and enter)</li>
       </ul>
     </div>

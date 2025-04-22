@@ -83,23 +83,27 @@ function ProjectOverview() {
                   <h3 className="font-mono font-medium text-base text-center">
                     {project.project_name}
                   </h3>
-                  <p className="font-sans text-sm text-slate-400 flex items-center justify-center">
-                    {project.project_type}
-                  </p>
-                  <span
-                    className={`w-26 h-6 px-1 py-1 rounded-full text-xs font-sans flex items-center justify-center ${
-                      project.project_status 
-                        ? "text-violet-600" 
-                        : "text-slate-500"
-                    }`}
-                    title={project.project_status ? "Complete" : "In progress"}
-                  >
-                    {project.project_status ? "COMPLETE" : "IN PROGRESS"}
-                  </span>
+                  {/* Wrap type and status in a flex container */}
+                  <div className="flex items-center justify-center gap-x-1 mt-1"> {/* Added flex container */}
+                    <p className="font-sans text-xs text-slate-400"> {/* Removed flex classes from here */}
+                      {project.project_type}
+                    </p>
+                    <span className="text-slate-400 text-xs">|</span>
+                    <span
+                      className={`w-auto h-6 rounded-full text-xs font-sans flex items-center justify-center ${ // Adjusted width to auto and padding
+                        project.project_status
+                          ? "text-violet-500"
+                          : "text-slate-400"
+                      }`}
+                      title={project.project_status ? "Complete" : "In progress"}
+                    >
+                      {project.project_status ? "Complete" : "In Progress"}
+                    </span>
+                  </div>
                 </button>
               ))}
             </div>
-            
+
             {/* Load More Button */}
             {hasMoreProjects && (
               <button

@@ -133,11 +133,12 @@ function ProjectView({ onPlaySong }) {
             alt="back-button" 
           />
         </button>
-        
+
         <div className="w-full mb-4 text-left">
-          <p className="font-mono text-slate-50 font-bold text-5xl tracking-tight mb-1">
+          {/* Change <p> to <h1> for the main page title */}
+          <h1 className="font-mono text-slate-50 font-bold text-5xl tracking-tight mb-1">
             PROJECT VIEW
-          </p>
+          </h1>
         </div>
 
         <div className="flex flex-row gap-10 w-full">

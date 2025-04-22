@@ -8,11 +8,11 @@ function NavBar() {
           Music Manager
         </Link>
         <div>
-          <Link to="/" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium ">
-            Projects
+          <Link to="/" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium font-mono">
+            PROJECTS
           </Link>
-          <Link to="/instructions" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium">
-            Instructions
+          <Link to="/instructions" className="text-gray-300 hover:text-violet-600 px-3 py-2 rounded-md text-sm font-medium font-mono">
+            INSTRUCTIONS 
           </Link>
         </div>
       </div>

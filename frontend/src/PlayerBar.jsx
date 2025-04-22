@@ -135,7 +135,8 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
             />
           )}
           <div>
-            <h4 className="font-semibold text-left">{songName}</h4>
+            {/* Changed h4 to p and kept styling classes */}
+            <p className="font-semibold text-left">{songName}</p>
             <p className="text-sm text-gray-400 text-left">
               {collaboratorName ? `feat.${collaboratorName}` : ""}
             </p>
@@ -182,6 +183,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
               value={currentTime}
               onChange={handleSliderChange}
               className="accent-violet-600 w-96 mt-3 mb-2"
+              aria-label="Song progress"
             />
             <span className="text-sm">{formatTime(duration)}</span>{" "}
             {/* Total duration */}
@@ -189,7 +191,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
         </div>
 
         {/* Volume & Extra Controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mr-10">
           {/* Repeat */}
           <button onClick={handleLoopChange}>
             <img
@@ -213,7 +215,8 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
             max="1"
             step="0.01"
             value={volumeValue} // Use the state value
-            className="w-24 h-1 accent-violet-600 bg-gray-600 rounded-full cursor-pointer"
+            className="min-w-32 h-1 accent-violet-600 bg-gray-600 rounded-full cursor-pointer"
+            aria-label="Volume control"
             onChange={(e) => {
               const newVolume = parseFloat(e.target.value);
               audioRef.current.volume = newVolume;
