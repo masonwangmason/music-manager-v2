@@ -217,21 +217,21 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
         <div className="flex justify-end mt-4 gap-3">
           <button
             type="button"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono transition duration-300"
             onClick={onClose}
           >
             CANCEL
           </button>
           <button
             type="button"
-            className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-red-700 font-mono"
+            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700 font-mono transition duration-300"
             onClick={onDelete}
           >
             DELETE
           </button>
           <button
             type="submit"
-            className="bg-violet-600 text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+            className="bg-violet-600 text-slate-50 py-2 px-4 rounded-md hover:bg-violet-900 font-mono transition duration-300"
             disabled={isUploading}
           >
             {isUploading ? "UPLOADING..." : "SAVE CHANGES"}

@@ -62,14 +62,14 @@ function ProjectOverview() {
               <h3 className="font-mono font-medium text-base text-center">
                 {project.project_name}
               </h3>
-              <p className="font-sans text-sm text-gray-400 flex items-center justify-center">
+              <p className="font-sans text-sm text-slate-400 flex items-center justify-center">
                 {project.project_type}
               </p>
               <span
                 className={`w-26 h-6 px-1 py-1 rounded-full text-xs font-sans flex items-center justify-center ${
                   project.project_status 
                     ? "text-violet-600" 
-                    : "text-slate-600"
+                    : "text-slate-500"
                 }`}
                 title={project.project_status ? "Complete" : "In progress"}
               >

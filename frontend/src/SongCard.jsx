@@ -36,9 +36,6 @@ function SongCard({ song, onEdit, onPlay }) {
         >
           Edit
         </button>
-        <button className="font-mono text-sm font-light border-1 border-slate-50 text-slate-50 py-1 px-2.5 rounded-md transition duration-200 hover:bg-slate-50 hover:text-slate-950">
-          Writing Mode
-        </button>
       </div>
     </div>
   );
