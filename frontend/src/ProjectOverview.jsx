@@ -39,13 +39,10 @@ function ProjectOverview() {
             PROJECTS OVERVIEW
           </p>
           <button
-            className="bg-slate-950 text-white border-1 hover:bg-slate-50 hover:text-black font-medium py-1 px-2 rounded-md flex items-center transition duration-300 group"
+            className="font-mono bg-violet-600 text-white border-violet-600 font-extralight text-2xl py-1 px-3 rounded-md flex items-center transition duration-300 hover:bg-violet-900"
             onClick={() => setShowProjectCreator(true)}
           >
-            <span className="group-hover:hidden">+</span>
-            <span className="font-mono text-base hidden group-hover:inline transition duration-400">
-              Create New Project +
-            </span>
+            +
           </button>
         </div>
 
@@ -60,18 +57,24 @@ function ProjectOverview() {
               <img
                 src={project.project_cover}
                 alt={project.project_name}
-                className="mb-3 w-60 h-60 object-cover" // Tailwind classes for square dimensions
+                className="mb-3 w-60 h-60 object-cover rounded-md" // Tailwind classes for square dimensions
               />
               <h3 className="font-mono font-medium text-base text-center">
                 {project.project_name}
               </h3>
               <p className="font-sans text-sm text-gray-400 flex items-center justify-center">
                 {project.project_type}
-                <span
-                  className={`w-1.5 h-1.5 rounded-full ml-1.5 ${project.project_status ? "bg-green-500" : "bg-red-500"}`}
-                  title={project.project_status ? "Complete" : "In progress"}
-                ></span>
               </p>
+              <span
+                className={`w-26 h-6 px-1 py-1 rounded-full text-xs font-sans flex items-center justify-center ${
+                  project.project_status 
+                    ? "text-violet-600" 
+                    : "text-slate-600"
+                }`}
+                title={project.project_status ? "Complete" : "In progress"}
+              >
+                {project.project_status ? "COMPLETE" : "IN PROGRESS"}
+              </span>
             </button>
           ))}
         </div>

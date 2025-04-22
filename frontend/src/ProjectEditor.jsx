@@ -231,7 +231,7 @@ function ProjectEditor({ project, onClose, onSave, onDelete }) {
           </button>
           <button
             type="submit"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+            className="bg-violet-600 text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
             disabled={isUploading}
           >
             {isUploading ? "UPLOADING..." : "SAVE CHANGES"}

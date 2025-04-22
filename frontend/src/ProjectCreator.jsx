@@ -205,7 +205,7 @@ function ProjectCreator({ onClose, onSave }) {
           </button>
           <button
             type="submit"
-            className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+            className="bg-violet-600 text-slate-50 py-2 px-4 rounded-md border-2 border-violet-600 hover:bg-violet-900 hover:border-violet-900 font-mono transition duration-300"
             disabled={isUploading}
           >
             {isUploading ? "CREATING..." : "CREATE PROJECT"}

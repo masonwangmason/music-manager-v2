@@ -139,6 +139,7 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
                     }
                   }}
                 />
+                <span className="text-xs text-left block mt-1">Please Leave it empty if you don't want to update your existing audio file</span>
               </div>
             </div>
             {/* Right Column: Lyrics Textarea */}
@@ -157,21 +158,21 @@ function SongEditor({ song, onClose, onSave, onDelete }) {
           <div className="flex justify-end mt-4 gap-3">
             <button
               type="button"
-              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono transition duration-300"
               onClick={onClose}
             >
               CANCEL
             </button>
             <button
               type="button"
-              className="bg-red-500 text-white py-2 px-4 rounded-md border-2 border-red-600 hover:bg-red-600 hover:text-slate-950 font-mono"
+              className="bg-red-600 text-white py-2 px-4 rounded-md border-2 border-red-600 hover:bg-red-900 hover:border-red-900 transition duration-300 font-mono"
               onClick={() => onDelete(song.song_id)}
             >
               DELETE SONG
             </button>
             <button
               type="button"
-              className="bg-black text-slate-50 py-2 px-4 rounded-md border-2 border-slate-50 hover:bg-slate-50 hover:text-slate-950 font-mono"
+              className="bg-violet-600 text-slate-50 py-2 px-4 rounded-md border-2 border-violet-600 hover:bg-violet-900 hover:border-violet-900 font-mono transition duration-300"
               onClick={handleSave}
             >
               SAVE SONG

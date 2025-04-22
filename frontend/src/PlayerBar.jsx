@@ -160,7 +160,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
               max={duration}
               value={currentTime}
               onChange={handleSliderChange}
-              className="accent-red-500 w-96 mt-3 mb-2"
+              className="accent-violet-600 w-96 mt-3 mb-2"
             />
             <span className="text-sm">{formatTime(duration)}</span>{" "}
             {/* Total duration */}
@@ -172,7 +172,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
           {/* Repeat */}
           <button onClick={handleLoopChange}>
             <img
-              className={`w-8 h-8 p-2 ${loopStatus ? "bg-red-500" : "bg-slate-50"} rounded-4xl transition duration-200`}
+              className={`w-8 h-8 p-2 ${loopStatus ? "bg-violet-600" : "bg-slate-50"} rounded-4xl transition duration-200`}
               src={repeatButton}
               alt="repeat-button"
             />
@@ -189,7 +189,7 @@ function PlayerBar({ songUrl, songName, collaboratorName, projectCover }) {
             min="0"
             max="1"
             step="0.01"
-            className="w-24 h-1 accent-red-500 bg-gray-600 rounded-full cursor-pointer"
+            className="w-24 h-1 accent-violet-600 bg-gray-600 rounded-full cursor-pointer"
             onChange={(e) => {
               audioRef.current.volume = e.target.value;
             }}

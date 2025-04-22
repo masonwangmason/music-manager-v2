@@ -5,6 +5,9 @@ import SongCard from "./SongCard";
 import SongCreator from "./SongCreator";
 import SongEditor from "./SongEditor";
 
+// First import the image at the top of the file
+import leftArrow from "./assets/buttons/left-arrow.png";
+
 function ProjectView({ onPlaySong }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -121,10 +124,14 @@ function ProjectView({ onPlaySong }) {
       <section className="flex flex-col items-start my-5 w-full max-w-5xl mx-auto">
         {/* Back Button */}
         <button
-          className="font-sans bg-slate-950 text-white hover:bg-slate-50 hover:text-black font-medium py-1 mb-2 rounded-md transition duration-200"
+          className="font-sans bg-black font-medium p-2 mb-4 border-1 rounded-md transition duration-300 hover:invert"
           onClick={() => navigate(-1)}
         >
-          Back to Projects Overview
+          <img 
+            className="size-5 invert" 
+            src={leftArrow} 
+            alt="back-button" 
+          />
         </button>
         
         <div className="w-full mb-4 text-left">
@@ -164,7 +171,7 @@ function ProjectView({ onPlaySong }) {
             </p>
 
             <button
-              className="font-mono text-sm bg-slate-950 text-white hover:bg-slate-50 hover:text-black font-normal py-1 px-2 border-1 border-slate-50 rounded-md transition duration-200 self-center w-full max-w-xs"
+              className="font-mono text-sm bg-violet-600 text-white hover:bg-violet-900 hover:text-black font-normal py-2 px-2 rounded-md transition duration-200 self-center w-full max-w-xs"
               onClick={() => setShowProjectEditor(true)}
             >
               EDIT PROJECT DETAILS
@@ -174,13 +181,10 @@ function ProjectView({ onPlaySong }) {
           {/* Right-Aligned Content Box for Songs */}
           <div className="flex flex-col items-start w-2/3">
             <button
-              className="font-sans bg-slate-950 text-white border-1 hover:bg-slate-50 hover:text-black font-medium py-1 px-2 rounded-md flex items-center transition duration-300 group mb-2 self-end"
+              className="font-mono text-lg bg-violet-600 text-white py-1 font-extrabold px-3 rounded-md hover:bg-violet-900 flex items-center transition duration-300 mb-2 self-end"
               onClick={() => setShowSongCreator(true)}
             >
-              <span className="group-hover:hidden">+</span>
-              <span className="font-mono text-sm hidden group-hover:inline transition duration-400">
-                CREATE NEW SONG +
-              </span>
+              +
             </button>
             {project.project_songs && project.project_songs.length > 0 ? (
               project.project_songs.map((song) => (
@@ -199,7 +203,7 @@ function ProjectView({ onPlaySong }) {
                 />
               ))
             ) : (
-              <p className="font-sans font-bold text-slate-50 text-left">
+              <p className="font-mono font-bold text-slate-50 text-left">
                 No songs available in this project yet.
                 <br />
                 Start by creating a new one by hitting the button above.
